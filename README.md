@@ -1,3 +1,3 @@
-# G.a.b.i.
+# G.A.B.I.
 
 General Artificial Brazilian Intelligence
