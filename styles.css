@@ -1,5 +1,43 @@
 body{
-    background: aquamarine;
-    overflow: hidden;
-  }
- 
+  background: aquamarine;
+  overflow: hidden;
+}
+
+.gabi {
+  position: absolute;
+  box-sizing: border-box;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vmin;
+  height: 80vmin;
+  
+    /* VARS */
+    --skin: #c3a066;
+    --hair: rgb(70, 35, 1);
+    --iris: #a16244; 
+}
+
+.gabi div {
+  position: absolute;
+  box-sizing: border-box;
+}
+
+.head {
+  width: 60%;
+  height: 80%;
+  background: var(--skin);
+  border-radius: 100% / 55% 55% 120% 120%;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.bg-hair {
+  width: 80%;
+  height: 75%;
+  border-radius: 100% / 100% 100% 10% 10%;
+  background: var(--hair);
+  left: 15%;
+  top: 15%;
+}
