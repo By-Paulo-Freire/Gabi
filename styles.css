@@ -97,3 +97,16 @@ body{
 .radius {
   border-radius: 100%;
 }
+
+.nose {
+  width: 16%;
+  height: 30%;
+  border-radius: 0 0 5vmin 5vmin;
+  border: 1vmin solid #0002;
+  border-right: 0.75vmin solid #0002;
+  border-left-color: transparent;
+  border-top: 0;
+  left: 50%;
+  top: 43%;
+  transform: translate(-70%, 0)
+}
