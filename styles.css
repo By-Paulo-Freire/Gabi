@@ -110,3 +110,18 @@ body{
   top: 43%;
   transform: translate(-70%, 0)
 }
+
+.eyebrow {
+  width: 36%;
+  height: 20%;
+  border-radius: 0 30% 0 0;
+  box-shadow: -0.75vmin -3vmin 0 -1vmin var(--hair);
+  top: 33%;
+  left: 55%;
+}
+
+.eyebrow + .eyebrow {
+  border-radius: 30% 0 0 0;
+  box-shadow: 0.75vmin -3vmin 0 -1vmin var(--hair);
+  left: 5%;
+}
