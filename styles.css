@@ -41,3 +41,12 @@ body{
   left: 15%;
   top: 15%;
 }
+
+.fg-hair {
+  width: 110%;
+  height: 40%;
+  left: -5%;
+  top: -15%;
+  border-radius: 100% / 100% 100% 10% 10%;
+  background: var(--hair);
+}
