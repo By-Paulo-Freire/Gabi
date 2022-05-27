@@ -6,7 +6,7 @@ class Gabi extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          emotion: 'teste',
+          emotion: 'happy',
         };
       }
     render () {
