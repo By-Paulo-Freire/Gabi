@@ -1,6 +1,7 @@
 import React from 'react';
 import Mouth from './Mouth';
 import Nose from './Nose';
+import Eye from './Eyes';
 import './head.css';
 
 class Head extends React.Component {
@@ -10,8 +11,8 @@ class Head extends React.Component {
     <div class="bg-hair">
       <div class="head">
         <div class="fg-hair"></div>
-        <div class="eye radius ha hb"></div>
-        <div class="eye radius ha hb"></div>
+        <Eye />
+        <Eye />
         <div class="eyebrow"></div>
         <div class="eyebrow"></div>
         <Nose />
