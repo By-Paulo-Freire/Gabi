@@ -2,27 +2,35 @@ import cv2
 import mediapipe as mp
 
 webcam = cv2.VideoCapture(0)
+mp_drawing = mp.solutions.drawing_utils
+mp_drawing_styles = mp.solutions.drawing_styles
+mp_holistic = mp.solutions.holistic
 
-detect = mp.solutions.face_detection
-face_detection = detect.FaceDetection()
-draw_box = mp.solutions.drawing_utils
+with mp_holistic.Holistic(
+    min_detection_confidence=0.5,
+    min_tracking_confidence=0.5) as holistic:
+    while webcam.isOpened():
+        success, image = webcam.read()
+        if not success:
+            print('Empty camera frame')
+            continue
 
-while True:
-    # webcam.read gives back two parameters
-    detected, frame = webcam.read()
+        results = holistic.process(image)
 
-    if not detected:
-        break
+        # Drawing the landmarks
+        image.flags.writeable = True
+        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+        mp_drawing.draw_landmarks(
+            image,
+            results.face_landmarks,
+            mp_holistic.FACEMESH_CONTOURS,
+            landmark_drawing_spec=None,
+            connection_drawing_spec=mp_drawing_styles
+            .get_default_face_mesh_contours_style())
 
-    faces = face_detection.process(frame)
-
-    if faces.detections:
-        for face in faces.detections:
-            draw_box.draw_detection(frame, face)
-
-    cv2.imshow('teste', frame)
-    # 27 is the ASCII code for the key 'Esc'
-    if cv2.waitKey(5) == 27:
-        break
+        cv2.imshow('Gabi', image)
+        # 27 is the ASCII code for the key 'Esc'
+        if cv2.waitKey(5) == 27:
+            break
 
 webcam.release()
