@@ -19,7 +19,6 @@ with mp_holistic.Holistic(
 
         # Drawing the landmarks
         image.flags.writeable = True
-        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
         mp_drawing.draw_landmarks(
             image,
             results.face_landmarks,
