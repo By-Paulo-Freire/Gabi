@@ -17,15 +17,30 @@ with mp_holistic.Holistic(
 
         results = holistic.process(image)
 
-        # Drawing the landmarks
-        image.flags.writeable = True
-        mp_drawing.draw_landmarks(
-            image,
-            results.face_landmarks,
-            mp_holistic.FACEMESH_CONTOURS,
-            landmark_drawing_spec=None,
-            connection_drawing_spec=mp_drawing_styles
-            .get_default_face_mesh_contours_style())
+        # 1. Draw face landmarks
+        mp_drawing.draw_landmarks(image, results.face_landmarks, mp_holistic.FACEMESH_CONTOURS,
+                                landmark_drawing_spec=None,
+                                connection_drawing_spec=mp_drawing_styles
+                                .get_default_face_mesh_contours_style()
+                                 )
+        
+        # 2. Right hand
+        mp_drawing.draw_landmarks(image, results.right_hand_landmarks, mp_holistic.HAND_CONNECTIONS, 
+                                 mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=4),
+                                 mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2)
+                                 )
+
+        # 3. Left Hand
+        mp_drawing.draw_landmarks(image, results.left_hand_landmarks, mp_holistic.HAND_CONNECTIONS, 
+                                 mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=4),
+                                 mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2)
+                                 )
+
+        # 4. Pose Detections
+        mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_holistic.POSE_CONNECTIONS, 
+                                 mp_drawing.DrawingSpec(color=(0,0,0), thickness=1, circle_radius=2),
+                                 mp_drawing.DrawingSpec(color=(0,0,0), thickness=2, circle_radius=2)
+                                 )
 
         cv2.imshow('Gabi', image)
         # 27 is the ASCII code for the key 'Esc'
