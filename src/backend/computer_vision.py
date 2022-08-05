@@ -1,5 +1,6 @@
 import cv2
 import mediapipe as mp
+from deepface import DeepFace
 
 webcam = cv2.VideoCapture(0)
 mp_drawing = mp.solutions.drawing_utils
@@ -16,6 +17,14 @@ with mp_holistic.Holistic(
             continue
 
         results = holistic.process(image)
+        attributes = ['age', 'gender', 'race', 'emotion']
+
+        try:
+            df = DeepFace.analyze(image, attributes)
+            print(df['age'], df['gender'], df['dominant_race'], df['dominant_emotion'])
+        except:
+            print('No face detected')
+            pass
 
         # 1. Draw face landmarks
         mp_drawing.draw_landmarks(image, results.face_landmarks, mp_holistic.FACEMESH_CONTOURS,
